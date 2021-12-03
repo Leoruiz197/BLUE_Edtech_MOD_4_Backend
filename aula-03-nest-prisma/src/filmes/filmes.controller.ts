@@ -17,7 +17,7 @@ export class FilmesController {
   constructor(private readonly filmesService: FilmesService) {}
 
   @Post()
-  create(@Body() createFilmeDto: CreateFilmeDto) {
+  async create(@Body() createFilmeDto: CreateFilmeDto) {
     return this.filmesService.createPrisma(createFilmeDto);
   }
 
