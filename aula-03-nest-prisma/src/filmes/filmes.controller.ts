@@ -13,11 +13,12 @@ import { UpdateFilmeDto } from './dto/update-filme.dto';
 
 @Controller('filmes')
 export class FilmesController {
+  // eslint-disable-next-line prettier/prettier
   constructor(private readonly filmesService: FilmesService) {}
 
   @Post()
   create(@Body() createFilmeDto: CreateFilmeDto) {
-    return this.filmesService.create(createFilmeDto);
+    return this.filmesService.createPrisma(createFilmeDto);
   }
 
   @Get()
