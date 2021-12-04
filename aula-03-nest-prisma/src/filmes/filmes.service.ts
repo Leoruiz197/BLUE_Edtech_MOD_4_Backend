@@ -26,16 +26,35 @@ export class FilmesService {
     return lista;
   }
 
+  async findAllPrisma(): Promise<Filme[]> {
+    return await this.prisma.filme.findMany();
+  }
+
   findOne(id: number) {
     return lista[id];
+  }
+
+  async findOnePrisma(id: number): Promise<Filme> {
+    return await this.prisma.filme.findUnique({ where: {id}});
   }
 
   update(id: number, updateFilmeDto: UpdateFilmeDto) {
     return `This action updates a #${id} filme`;
   }
 
+  async updatePrisma(id: number, updateFilmeDto: UpdateFilmeDto): Promise<Filme> {
+    return await this.prisma.filme.update({
+      data:{...updateFilmeDto},
+      where:{id}
+    });
+  }
+
   remove(id: number) {
     delete lista[id];
     return `deletado com sucesso id: ${id}`;
+  }
+
+  async removePrisma(id: number) {
+    return await this.prisma.filme.delete({ where: {id}});
   }
 }

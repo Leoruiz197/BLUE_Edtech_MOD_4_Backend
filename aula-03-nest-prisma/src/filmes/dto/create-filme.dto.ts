@@ -1,8 +1,7 @@
+/* eslint-disable prettier/prettier */
 import { IsNotEmpty, IsInt, IsString } from 'class-validator';
 
 export class CreateFilmeDto {
-  @IsNotEmpty()
-  @IsInt()
   id: number;
 
   @IsNotEmpty()
