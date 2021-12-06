@@ -15,4 +15,8 @@ export class CreateFilmeDto {
   @IsNotEmpty()
   @IsString()
   sinopse: string;
+
+  @IsNotEmpty()
+  @IsInt()
+  generoid: number;
 }
