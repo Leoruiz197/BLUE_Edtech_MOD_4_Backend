@@ -6,16 +6,19 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { FilmesService } from './filmes.service';
 import { CreateFilmeDto } from './dto/create-filme.dto';
 import { UpdateFilmeDto } from './dto/update-filme.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('filmes')
 export class FilmesController {
   constructor(private readonly filmesService: FilmesService) {}
 
   @Post()
+  @UseGuards(AuthGuard('jwt'))
   create(@Body() createFilmeDto: CreateFilmeDto) {
     return this.filmesService.create(createFilmeDto);
   }
